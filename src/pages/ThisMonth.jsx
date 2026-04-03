@@ -144,7 +144,7 @@ export default function ThisMonth() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <SummaryCard label="Income" value={stats.totalIncome} icon={<ArrowUpRight size={22} />} color="green" />
                 <SummaryCard label="Expenses" value={stats.totalExpenses} icon={<ArrowDownLeft size={22} />} color="rose" />
-                <SummaryCard label="Daily Avg." value={stats.totalExpenses / new Date().getDate()} icon={<TrendingUp size={22} />} color="yellow" />
+                <SummaryCard label="Daily Avg. Expenses" value={stats.totalExpenses / (new Date().getDate() - 1)} icon={<TrendingUp size={22} />} color="yellow" />
                 <SummaryCard label="Today's Spent" value={todayExpenses} icon={<ShoppingBag size={22} />} color="orange" />
                 <SummaryCard label="Remaining" value={stats.totalIncome - stats.totalExpenses} icon={<Layers size={22} />} color="blue" />
             </div>
