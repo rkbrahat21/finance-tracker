@@ -28,7 +28,7 @@ export default function Savings() {
     const handleWithdraw = async (e) => {
         e.preventDefault();
         if (!withdrawAmount || isNaN(withdrawAmount) || Number(withdrawAmount) <= 0) return;
-        
+
         if (Number(withdrawAmount) > savingsData.totalSavings) {
             setStatus({ type: 'error', message: `Cannot exceed total savings (৳${savingsData.totalSavings.toLocaleString()})` });
             return;
@@ -43,17 +43,17 @@ export default function Savings() {
                 note: 'Withdrawn from historical savings',
                 date: new Date().toISOString()
             });
-            
+
             setStatus({ type: 'success', message: 'Added to current month income!' });
             setWithdrawAmount('');
             setIsWithdrawing(false);
-            
+
             // Re-load data after a short delay
             setTimeout(() => {
                 setStatus({ type: '', message: '' });
                 loadSavings();
             }, 2000);
-            
+
         } catch (err) {
             console.error(err);
             setStatus({ type: 'error', message: 'Failed to add income.' });
@@ -76,7 +76,7 @@ export default function Savings() {
     }
 
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 mx-auto pt-6 pb-24 space-y-8 max-w-6xl">
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 mx-auto pt-6 pb-24 space-y-8">
             {/* Header */}
             <div>
                 <h1 className="text-3xl tracking-tight font-black text-white flex items-center gap-3">
@@ -89,7 +89,7 @@ export default function Savings() {
             {/* Total Savings Card */}
             <div className="bg-[#1E293B]/50 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 border border-slate-700/30 relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/5 blur-[100px] rounded-full -mr-32 -mt-32 transition-all group-hover:bg-yellow-400/10"></div>
-                
+
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
                     <div className="space-y-2">
                         <span className="text-slate-400 text-xs font-black uppercase tracking-widest block">Total Historical Savings</span>

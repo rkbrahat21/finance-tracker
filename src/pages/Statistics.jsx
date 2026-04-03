@@ -217,7 +217,7 @@ export default function Statistics() {
     };
 
     return (
-        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 max-w-6xl mx-auto pt-6 px-4 space-y-8 pb-20">
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 mx-auto pt-6 px-4 space-y-8 pb-20">
 
             {/* Header section with Custom Filters */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-50">
