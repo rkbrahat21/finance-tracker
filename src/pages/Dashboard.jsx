@@ -91,8 +91,8 @@ export default function Dashboard() {
         <div className="animate-in fade-in duration-500 max-w-2xl mx-auto md:max-w-none space-y-6">
             <div className="flex flex-col gap-8 items-center justify-between">
                 {/* Top Row: Stats Cards */}
-                <div className="flex flex-col md:flex-row justify-center items-center w-full space-x-4 md:space-x-6 space-y-4 md:space-y-6">
-                    <div className="w-[60%]">
+                <div className="flex flex-col md:flex-row justify-center items-center w-full gap-6">
+                    <div className="w-full md:w-[60%]">
                         <BalanceCard
                             totalBalance={stats.totalBalance}
                             totalIncome={stats.totalIncome}
@@ -100,7 +100,7 @@ export default function Dashboard() {
                             totalSavings={stats.totalSavings}
                         />
                     </div>
-                    <div className="w-[40%] space-y-6">
+                    <div className="w-full md:w-[40%] space-y-6">
                         <TransactionCards transactions={transactions} />
                         <ActionButtons
                             onAddInfo={() => setShowForm(true)}

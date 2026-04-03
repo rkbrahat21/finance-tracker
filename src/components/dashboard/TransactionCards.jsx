@@ -10,26 +10,26 @@ export default function TransactionCards({ transactions = [] }) {
                 {recentTransactions.map((tx, index) => (
                     <div
                         key={tx.id}
-                        // w-[calc(33.333%-10.66px)] ensures exactly 3 cards fit in the visible area (accounting for the 1rem gap)
-                        className="bg-[#1E293B] rounded-3xl p-5 w-[calc(33.333%-10.66px)] min-w-[140px] snap-start shrink-0 flex flex-col justify-between h-36 transition-all duration-300 hover:bg-slate-800 hover:scale-[1.02] hover:shadow-lg animate-in fade-in slide-in-from-right-4"
+                        // Responsive card width
+                        className="bg-[#1E293B] rounded-3xl p-5 w-[75%] sm:w-[calc(33.333%-10.66px)] min-w-[200px] sm:min-w-[140px] snap-start shrink-0 flex flex-col justify-between h-40 transition-all duration-300 hover:bg-slate-800 hover:scale-[1.02] hover:shadow-lg animate-in fade-in slide-in-from-right-4"
                         style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'both' }}
                     >
                         <div className="flex items-center gap-2">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center 
+                            <div className={`w-8 h-8 rounded-full shrink-0 flex items-center justify-center 
                                 ${tx.type === 'income' ? 'bg-green-500/10 text-green-500' : 'bg-yellow-500/10 text-yellow-500'}
                             `}>
                                 {getCategoryIcon(tx.category)}
                             </div>
-                            <div className="flex flex-col">
-                                <span className="text-sm font-medium text-slate-300 truncate w-20">{tx.category}</span>
+                            <div className="flex flex-col overflow-hidden">
+                                <span className="text-sm font-bold text-slate-100 truncate">{tx.category}</span>
                             </div>
                         </div>
 
                         <div className="mt-4">
-                            <div className={`text-xl font-bold ${tx.type === 'income' ? 'text-green-400' : 'text-white'}`}>
+                            <div className={`text-xl font-black ${tx.type === 'income' ? 'text-green-400' : 'text-white'}`}>
                                 {tx.type === 'income' ? '+' : '-'}৳{tx.amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                             </div>
-                            <div className="text-xs text-slate-500 mt-1 truncate">
+                            <div className="text-[10px] text-slate-500 mt-1 truncate">
                                 {new Date(tx.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} • {tx.subcategory || tx.note || 'No note'}
                             </div>
                         </div>

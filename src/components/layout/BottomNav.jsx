@@ -6,7 +6,7 @@ export default function BottomNav() {
     const path = location.pathname;
 
     return (
-        <nav className="md:hidden fixed bottom-0 w-full max-w-md mx-auto bg-[#0F172A] pb-6 pt-4 px-6 flex justify-between items-center z-50">
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0F172A] pb-6 pt-4 px-6 flex justify-between items-center z-50 border-t border-slate-800/50 backdrop-blur-lg">
             <Link
                 to="/"
                 className={`w-12 h-12 flex items-center justify-center rounded-full transition-colors ${path === '/' ? 'text-white' : 'text-slate-500 hover:text-slate-300'}`}
