@@ -119,7 +119,7 @@ export default function ThisMonth() {
     }
 
     return (
-        <div className="max-w-6xl mx-auto pt-6 px-4 space-y-8 pb-32 animate-in fade-in duration-700">
+        <div className="mx-auto pt-6 px-4 space-y-8 pb-32 animate-in fade-in duration-700">
 
             {/* Header */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
