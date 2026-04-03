@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL.replace('/api', '');
+const BASE_URL = import.meta.env.VITE_API_URL.replace(/\/+$/, '').replace('/api', '');
 const API_URL = `${BASE_URL}/api`;
 
 export const getAvatarUrl = (avatar) => {
@@ -12,7 +12,7 @@ export const getAvatarUrl = (avatar) => {
  * Shared request helper with consistent error handling.
  */
 async function request(endpoint, options = {}) {
-    const url = `${API_URL}${endpoint}`;
+    const url = `${API_URL}${endpoint}`.replace(/([^:]\/)\/+/g, '$1');
     const token = localStorage.getItem('token');
 
     const config = {
