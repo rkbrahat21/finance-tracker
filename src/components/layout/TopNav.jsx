@@ -1,7 +1,7 @@
 import { Bell, Search, Home, BarChart2, Settings, Calendar, User as UserIcon, Users, PiggyBank, PieChart, Wallet, TrendingUp } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { getAvatarUrl } from '../../services/api';
+
 
 export default function TopNav() {
     const { user } = useAuth();
@@ -12,11 +12,7 @@ export default function TopNav() {
         <header className="flex justify-between items-center py-6 shrink-0">
             <Link to="/settings" className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
                 <div className="w-10 h-10 rounded-full bg-slate-700 overflow-hidden ring-2 ring-transparent group-hover:ring-yellow-400/50 transition-all flex items-center justify-center">
-                    {user?.avatar ? (
-                        <img src={getAvatarUrl(user.avatar)} alt="User avatar" className="w-full h-full object-cover" />
-                    ) : (
-                        <UserIcon size={20} className="text-slate-400" />
-                    )}
+                    <UserIcon size={20} className="text-slate-400" />
                 </div>
                 <div>
                     <p className="text-sm text-slate-400 group-hover:text-slate-200 transition-colors tracking-tight">Hello {user?.name.split(' ')[0] || 'User'}</p>

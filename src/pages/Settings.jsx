@@ -1,17 +1,15 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import {
     Bell, Shield, Eye, Database, Smartphone, Palette,
     ChevronRight, ArrowRight, User, Mail, Globe,
-    Moon, Cloud, Save, Zap, LogOut, Camera, Wallet, ShieldCheck
+    Moon, Cloud, Save, Zap, LogOut, Wallet, ShieldCheck
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { getAvatarUrl } from '../services/api';
 
 export default function Settings() {
-    const { user, logout, updateAvatar } = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
-    const fileInputRef = useRef(null);
     const [activeTab, setActiveTab] = useState('account');
     const [notifications, setNotifications] = useState(true);
     const [theme, setTheme] = useState('Dark');
@@ -28,20 +26,7 @@ export default function Settings() {
 
 
 
-    const handleAvatarChange = async (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
 
-        const formData = new FormData();
-        formData.append('avatar', file);
-
-        try {
-            await updateAvatar(formData);
-        } catch (err) {
-            console.error("Failed to upload avatar", err);
-            alert("Failed to upload image. Please try again.");
-        }
-    };
 
     const handleSaveProfile = () => {
         setProfile({ ...tempProfile });
@@ -120,30 +105,9 @@ export default function Settings() {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
                     <div className="flex flex-col md:flex-row items-center gap-8 text-center md:text-left w-full md:w-auto">
                         <div className="relative group/avatar shrink-0">
-                            <input
-                                type="file"
-                                ref={fileInputRef}
-                                onChange={handleAvatarChange}
-                                className="hidden"
-                                accept="image/*"
-                            />
                             <div className="w-24 h-24 rounded-[2rem] bg-slate-700 overflow-hidden ring-4 ring-slate-800/50 group-hover/avatar:ring-yellow-400/30 transition-all duration-500 flex items-center justify-center">
-                                {user?.avatar ? (
-                                    <img
-                                        src={getAvatarUrl(user.avatar)}
-                                        alt="Profile"
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover/avatar:scale-110"
-                                    />
-                                ) : (
-                                    <User size={40} className="text-slate-500" />
-                                )}
+                                <User size={40} className="text-slate-500" />
                             </div>
-                            <button
-                                onClick={() => fileInputRef.current?.click()}
-                                className="absolute -bottom-2 -right-2 w-8 h-8 bg-yellow-400 rounded-xl flex items-center justify-center text-slate-900 shadow-xl border-4 border-[#1E293B] hover:scale-110 transition-transform"
-                            >
-                                <Camera size={14} />
-                            </button>
                         </div>
 
                         <div className="flex-1 w-full">
